@@ -77,8 +77,8 @@ const ServicesData = [
 const Services = () => {
   return (
     <>
-      <section className="section" id="services">
-        <Container>
+      <section className="section">
+        <Container id="services">
           <Row className="justify-content-center">
             <Col lg={7}> 
               <div className="header-title text-center">

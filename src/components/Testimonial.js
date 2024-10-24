@@ -65,8 +65,8 @@ const NextBtn = ({ className, onClick }) => {
 const Testimonial = () => {
   return (
     <React.Fragment>
-      <section className="section" id="testimonial">
-        <Container>
+      <section className="section">
+        <Container id="testimonial">
           <Row className="justify-content-center">
             <Col className="mb-5 pb-5" lg={7}>
               <div className="header-title text-center">
