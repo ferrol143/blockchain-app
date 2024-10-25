@@ -32,7 +32,7 @@ const ProcessData = [
   {
     number: "02",
     step: "Unggah Sertifikat",
-    caption: "Unggah sertifikat digital Anda untuk penyimpanan aman di blockchain.",
+    caption: "Unggah sertifikat digital Anda dengan penyimpanan aman di blockchain.",
   },
   {
     number: "03",
@@ -41,7 +41,7 @@ const ProcessData = [
   },
   {
     number: "04",
-    step: "Kelola Sertifikat",
+    step: "Bagikan Sertifikat",
     caption: "Kelola dan akses sertifikat Anda dari mana saja, kapan saja.",
   },
 ];

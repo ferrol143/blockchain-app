@@ -93,6 +93,7 @@ const NavBar = ({isDark}) => {
                   "services",
                   "process",
                   "testimonial",
+                  "sertificate"
                 ]}
                 currentClassName="active"
                 className="navbar-nav ms-auto navbar-center d-xxl-flex flex-col align-items-xxl-center"
@@ -111,7 +112,7 @@ const NavBar = ({isDark}) => {
                   <NavLink href="#testimonial">Testimoni</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink href="">Cek Sertifikat</NavLink>
+                  <NavLink href="#sertificate">Cek Sertifikat</NavLink>
                 </li>
                 <div className="ms-2">
                   <Link to="/login" className="btn btn-primary">
