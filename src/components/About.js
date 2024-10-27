@@ -50,7 +50,7 @@ const About = () => {
           <Row className="align-items-center g-3 g-lg-0">
             <Col lg={6}>
               <div className="skill-box bg-white p-4 rounded box-shadow">
-                <p className="text-uppercase mb-1">Tentang Kami</p>
+                <p className="text-uppercase mb-1">Kenapa Memakai Blockchain</p>
                 <h3 className="mb-2">
                   Menghadirkan Keamanan Sertifikat Digital dengan Teknologi Blockchain.
                 </h3>

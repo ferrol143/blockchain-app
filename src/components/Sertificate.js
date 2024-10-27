@@ -1,63 +1,21 @@
 import React, {useState} from "react";
-import { Col, Container, Row, Form, Label, Input, FormGroup } from "reactstrap";
-
-const Card = (props) => {
-  return (
-    <React.Fragment>
-      <Col lg={3} md={6}>
-        <div className="contact-info text-center mt-5">
-          <div className="icon">
-            <i className={props.iconClass}></i>
-          </div>
-          <div className="mt-4 pt-2">
-            <h6 className="fs-17">{props.title}</h6>
-            {props.isChildItem.map((item, key) => (
-              <p className="text-muted mb-0" key={key}>
-                {item}
-              </p>
-            ))}
-          </div>
-        </div>
-      </Col>
-    </React.Fragment>
-  );
-};
-
-// Contact Data
-
-const ContactData = [
-  {
-    title: "Main Office",
-    iconClass: "mdi mdi-map-marker text-primary h4",
-    isChildItem: ["2276 Lynn Ogden Lane Beaumont Lodgeville Road TX 77701"],
-  },
-  {
-    title: "Phone & Email",
-    iconClass: "mdi mdi-phone text-primary h4",
-    isChildItem: ["Phone: +71 612-234-4023", "Fax: +954-627-9727"],
-  },
-  {
-    title: "Contact",
-    iconClass: "mdi mdi-email text-primary h4",
-    isChildItem: ["www.exampledesign.com", "example@design.com"],
-  },
-  {
-    title: "Working Hours",
-    iconClass: "mdi mdi-calendar-clock text-primary h4",
-    isChildItem: ["Monday-Friday: 9:00-06:00", "Saturday-Sunday: Holiday"],
-  },
-];
+import { Col, Container, Row, Form, Spinner, Label, Input, FormGroup, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { FaCheck } from "react-icons/fa";
 
 const Sertificate = () => {
-    const [isLoading, setIsLoading] = useState(false);
+    const [modal, setModal] = useState(false);
 
-    const handleButtonClick = () => {
-        setIsLoading(true); 
+    const toggle = () => setModal(!modal);
 
-        setTimeout(() => {
-        setIsLoading(false); 
-        }, 2000);
-    };
+    const certificateData = [
+    { status: "completed", text: "Diterbitkan pada 15 Oktober 2020" },
+    { status: "completed", text: "Diterbitkan oleh IPB Univeristy" },
+    { status: "completed", text: "Diterbitkan menggunakan Alphachain" },
+    { status: "completed", text: "Diterbitkan untuk Ferrol Azki Mashudi" },
+    { status: "loading", text: "Diterima pada 20 Oktober 2020" },
+    { status: "loading", text: "Terakhir di update pada 20 Oktober 2020" },
+    { status: "loading", text: "Terverivikasi" },
+  ];
 
   return (
     <React.Fragment>
@@ -93,20 +51,13 @@ const Sertificate = () => {
                                     className="form-control"
                                     placeholder="URL Sertifikat"
                                 />
-                                <button
+                                <Button
                                     className="btn btn-primary"
                                     type="button"
-                                    onClick={handleButtonClick}
-                                    disabled={isLoading}
+                                    onClick={toggle}
                                     >
-                                    {isLoading ? (
-                                        <>
-                                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                        </>
-                                    ) : (
-                                        'Verifikasi'
-                                    )}
-                                </button>
+                                    Verifikasi
+                                </Button>
                             </div>
                             <div id="simple-msg"></div>
                         </FormGroup>
@@ -114,6 +65,30 @@ const Sertificate = () => {
                     </Row>
                 </Form>
               </div>
+              <Modal isOpen={modal} toggle={toggle} centered={true} size="md">
+                <ModalHeader>
+                  <p className="fs-3 fw-bold mb-0 text-center">Proses Verifikasi</p>
+                </ModalHeader>
+                <ModalBody className="mx-3 mb-3">
+                  {certificateData.map((detail, index) => (
+                    <React.Fragment key={index}>
+                      <Row>
+                        <Col xs={1}>
+                          {detail.status === "completed" ? (
+                            <FaCheck className="text-success" />
+                          ) : (
+                            <Spinner size="sm" color="secondary" />
+                          )}
+                        </Col>
+                        <Col className={index === certificateData.length - 1 ? "fw-bold text-uppercase" : ""}>
+                          {detail.text}
+                        </Col>
+                      </Row>
+                      {index < certificateData.length - 1 && <hr />}
+                    </React.Fragment>
+                  ))}
+                </ModalBody>
+              </Modal>
             </Col>
           </Row>
         </Container>
