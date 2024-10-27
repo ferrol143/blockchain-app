@@ -66,8 +66,8 @@ const Sertificate = () => {
                 </Form>
               </div>
               <Modal isOpen={modal} toggle={toggle} centered={true} size="md">
-                <ModalHeader>
-                  <p className="fs-3 fw-bold mb-0 text-center">Proses Verifikasi</p>
+                <ModalHeader toggle={toggle}>
+                  <p className="fs-4 fw-bold mb-0 text-center">Verifikasi</p>
                 </ModalHeader>
                 <ModalBody className="mx-3 mb-3">
                   {certificateData.map((detail, index) => (
