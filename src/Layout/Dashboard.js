@@ -1,6 +1,6 @@
 import React from "react";
 
-const Layout = (props) => {
+const LayoutDashboard = (props) => {
   return (
     <React.Fragment>
       {props.children}
@@ -8,4 +8,4 @@ const Layout = (props) => {
   );
 };
 
-export default Layout;
+export default LayoutDashboard;

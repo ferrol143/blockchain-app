@@ -39,12 +39,6 @@ const Section = () => {
             <Col lg={6}>
               <div className="home-dashboard mt-4 mt-lg-0">
                 <img src={img6} alt="" className="img-fluid" />
-
-                <div className="play-btn">
-                <Link to="#" onClick={() => setOpen(true)} className="image-popup">
-                    <i className="mdi mdi-motion-play"></i>
-                </Link>
-                </div>
               </div>
             </Col>
           </Row>
@@ -77,14 +71,7 @@ const Section = () => {
           </svg>
         </div>
       </div>
-      {/* <!-- END SHAPE --> */}
-      <ModalVideo
-        channel="vimeo"
-        videoId="287684225"
-        autoplay
-        isOpen={isOpen}
-        onClose={() => setOpen(false)}
-      />
+
     </React.Fragment>
   );
 };

@@ -63,3 +63,17 @@
 .footer-alt {
   background-color: #15242b;
 }
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.2); /* Warna overlay hitam transparan */
+  opacity: 0; /* Sembunyikan overlay secara default */
+  transition: opacity 0.3s ease; /* Efek transisi halus */
+  width: 245px;
+  margin-left: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.position-relative:hover .overlay {
+  opacity: 1; /* Munculkan overlay saat gambar di-hover */
+}

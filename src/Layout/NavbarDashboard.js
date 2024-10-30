@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Collapse, Container, NavbarToggler, NavLink, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label } from "reactstrap";
+import { Collapse, Container, NavbarToggler, Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "reactstrap";
 import Scrollspy from "react-scrollspy";
+import { CgProfile } from "react-icons/cg";
 
 //import images
 import logoLight from "../assets/images/logo-light.png";
 import logoDark from "../assets/images/logo-dark.png";
 import { Link } from "react-router-dom";
-import GoogleButton from "../components/GoogleButton";
 
-const NavBar = ({isDark}, args) => {
+const NavBarDashboard = ({isDark, direction, ...args}) => {
   const [isOpenMenu, setisOpenMenu] = useState(false);
   const [navClass, setnavClass] = useState("");
 
-  const [modal, setModal] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleLogin = () => setModal(!modal);
-
-  const toggle = () => setisOpenMenu(!isOpenMenu);
+  const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   useEffect(() => {
     window.addEventListener("scroll", scrollNavigation, true);
@@ -31,7 +29,7 @@ const NavBar = ({isDark}, args) => {
     }
   }
 
-  const isDarkClass = isDark ? "navbar-light" : "";
+  const isDarkClass = isDark ? "navbar-dark" : "";
 
   return (
     <React.Fragment>
@@ -104,76 +102,34 @@ const NavBar = ({isDark}, args) => {
                 className="navbar-nav ms-auto navbar-center d-xxl-flex flex-col align-items-xxl-center"
                 id="mySidenav"
               >
-                <li className="nav-item">
-                  <NavLink href="#home">Beranda</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink href="#services">Layanan</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink href="#process">Cara Kerja</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink href="#testimonial">Testimoni</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink href="#sertificate">Cek Sertifikat</NavLink>
-                </li>
                 <div className="ms-2">
-                  <Link to="/" className="btn btn-primary" onClick={toggleLogin}>
-                    Masuk
-                  </Link>
+                    <Dropdown isOpen={dropdownOpen} toggle={toggle} direction={direction}>
+                        <DropdownToggle>
+                            <CgProfile/>
+                        </DropdownToggle>
+                        <DropdownMenu {...args} end={true} className="mt-2">
+                            <DropdownItem>
+                            <i className="fa fa-th"></i> Dashboard
+                            </DropdownItem>
+                            <DropdownItem>
+                            <i className="fa fa-user"></i> Profile
+                            </DropdownItem>
+                            <DropdownItem>
+                            <i className="fa fa-envelope"></i> Send Transcript
+                            </DropdownItem>
+                            <DropdownItem>
+                            <i className="fa fa-sign-out"></i> Log Out
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </div>
               </Scrollspy>
             </Collapse>
           </Container>
         </nav>
       </span>
-
-      <Modal isOpen={modal} toggle={toggleLogin} {...args} centered={true}>\
-        <ModalBody className="mx-3">
-          <p className="fs-3 fw-semibold">Masuk</p>
-          <Form>
-            <FormGroup floating>
-              <Input
-                id="exampleEmail"
-                name="email"
-                placeholder="Email"
-                type="email"
-              />
-              <Label for="exampleEmail">
-                Email
-              </Label>
-            </FormGroup>
-            {' '}
-            <FormGroup floating>
-              <Input
-                id="examplePassword"
-                name="password"
-                placeholder="Password"
-                type="password"
-              />
-              <Label for="examplePassword">
-                Password
-              </Label>
-            </FormGroup>
-            {' '}
-            <Button className="w-100 btn btn-primary mt-4">
-              Masuk
-            </Button>
-          </Form>
-
-          <div className="d-flex align-items-center my-4">
-            <div className="flex-grow-1 border-top"></div>
-              <span className="mx-3 text-muted">Atau</span>
-            <div className="flex-grow-1 border-top"></div>
-          </div>
-
-          <GoogleButton/>
-        </ModalBody>
-      </Modal>
     </React.Fragment>
   );
 };
 
-export default NavBar;
+export default NavBarDashboard;
