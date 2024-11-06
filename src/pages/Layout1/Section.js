@@ -16,7 +16,7 @@ const Section = () => {
           <Row className="align-items-center">
             <Col lg={6}>
               <div className="home-content me-lg-5">
-                <h6 className="sub-title mb-3 text-white">ALPHACHAIN</h6>
+                <h6 className="sub-title mb-3 text-white">AETERNUM</h6>
                 <h1 className="mb-4 text-white">
                  Sertifikat Digital Aman dan Terjamin dengan Teknologi{" "}
                   <span className="text-primary">Blockchain</span>
@@ -37,7 +37,7 @@ const Section = () => {
               </div>
             </Col>
             <Col lg={6}>
-              <div className="home-dashboard mt-4 mt-lg-0">
+              <div className="mt-4 mt-lg-0">
                 <img src={img6} alt="" className="img-fluid" />
               </div>
             </Col>
