@@ -18,35 +18,35 @@ const ContainerProfile = () => {
         </div>
 
 
-        <div className="d-flex align-items-center justify-content-center mt-3 gap-4">
-            <span className="text-muted me-2">
-                https://www.alphachain.com/ferrolazki
-            </span>
-            
-            <a
-                href="#"
-                className="text-decoration-none text-success d-flex align-items-center me-3"
-            >
-                <FaEdit className="me-1" />
-                Edit URL
-            </a>
+        <div className="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-3">
+          <span className="text-muted text-center w-100 w-md-auto">
+              https://www.alphachain.com/ferrolazki
+          </span>
+          
+          <a
+              href="#"
+              className="text-decoration-none text-success d-flex align-items-center"
+          >
+              <FaEdit className="me-1" />
+              Edit URL
+          </a>
 
-            <button
-                className="btn btn-link text-muted text-decoration-none d-flex align-items-center me-3"
-                style={{ padding: 0 }}
-            >
-                <FaLink className="me-1" />
-                Copy URL
-            </button>
+          <button
+              className="btn btn-link text-muted text-decoration-none d-flex align-items-center"
+              style={{ padding: 0 }}
+          >
+              <FaLink className="me-1" />
+              Copy URL
+          </button>
 
-            <a
-                href="#"
-                className="text-decoration-none text-muted d-flex align-items-center"
-            >
-                <FaExternalLinkAlt className="me-1" />
-                Preview Public Profile
-            </a>
-            </div>
+          <a
+              href="#"
+              className="text-decoration-none text-muted d-flex align-items-center"
+          >
+              <FaExternalLinkAlt className="me-1" />
+              Preview Public Profile
+          </a>
+      </div>
       </div>
     </div>
   );
