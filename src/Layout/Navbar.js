@@ -8,6 +8,9 @@ import logoDark from "../assets/images/logo-dark.png";
 import { Link } from "react-router-dom";
 import GoogleButton from "../components/GoogleButton";
 
+//import fetch
+import { login } from "../fetch/auth.js";
+
 const NavBar = ({isDark}, args) => {
   const [isOpenMenu, setisOpenMenu] = useState(false);
   const [navClass, setnavClass] = useState("");
@@ -133,7 +136,7 @@ const NavBar = ({isDark}, args) => {
       <Modal isOpen={modal} toggle={toggleLogin} {...args} centered={true}>\
         <ModalBody className="mx-3">
           <p className="fs-3 fw-semibold">Masuk</p>
-          <Form>
+          <Form onSubmit={login}>
             <FormGroup floating>
               <Input
                 id="exampleEmail"

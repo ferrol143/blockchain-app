@@ -56,12 +56,12 @@ const BadgeWalletCard = (args) => {
         <Card className="p-3" style={{ borderRadius: '10px', minHeight: '500px', backgroundColor: '#F6F4F4' }}>
           <CardBody>
             {/* Header */}
-            <div className="d-flex justify-content-between align-items-center mb-3">
+            {/* <div className="d-flex justify-content-between align-items-center mb-3">
               <h5 className="mb-0 font-weight-bold">Badge Wallet</h5>
               <a href="#" className="text-decoration-none text-success d-flex align-items-center">
                 <FaEdit className="me-1" /> Reorder/Edit
               </a>
-            </div>
+            </div> */}
 
             {/* Add Badge Link */}
             <span className="text-decoration-none text-success d-flex align-items-center mb-3" style={{ cursor: 'pointer' }} onClick={toggle}>

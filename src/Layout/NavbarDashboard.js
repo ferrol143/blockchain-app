@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Collapse, Container, NavbarToggler, Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "reactstrap";
+import { Collapse, Container, NavbarToggler, Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Form } from "reactstrap";
 import Scrollspy from "react-scrollspy";
 import { CgProfile } from "react-icons/cg";
 
@@ -7,6 +7,9 @@ import { CgProfile } from "react-icons/cg";
 import logoLight from "../assets/images/logo-light.png";
 import logoDark from "../assets/images/logo-dark.png";
 import { Link } from "react-router-dom";
+
+//fetch
+import { logout } from "../fetch/auth";
 
 const NavBarDashboard = ({isDark, direction, ...args}) => {
   const [isOpenMenu, setisOpenMenu] = useState(false);
@@ -117,7 +120,7 @@ const NavBarDashboard = ({isDark, direction, ...args}) => {
                             <DropdownItem>
                             <i className="fa fa-envelope"></i> Send Transcript
                             </DropdownItem>
-                            <DropdownItem>
+                            <DropdownItem onClick={logout}>
                             <i className="fa fa-sign-out"></i> Log Out
                             </DropdownItem>
                         </DropdownMenu>
