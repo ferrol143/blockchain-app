@@ -11,7 +11,7 @@ const useAuth = () => {
             setError(null);
 
             const authorization = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/backend/backend/api/v1/auth/logged_in`, { 
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/logged_in`, { 
                 headers  : {
                     'Content-Type': 'application/json',
                     'Authorization' : 'Bearer ' + authorization

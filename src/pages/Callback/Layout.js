@@ -15,7 +15,7 @@ const CallbackPage = () => {
 
                 const searchParams = window.location.search;
 
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/backend/api/v1/auth/token${searchParams}`, { 
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/token${searchParams}`, { 
                     headers  : {
                         'Content-Type': 'application/json'
                     }

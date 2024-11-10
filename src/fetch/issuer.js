@@ -6,7 +6,7 @@ export const getBadges = async () => {
     const id = dataUser.user.id;
 
     try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/backend/api/v1/issuer/issuer-credential/${id}`, {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/issuer/issuer-credential/${id}`, {
             headers : {
                 "Content-Type" : 'application/json',
                 'Authorization': 'Bearer ' + authorization
@@ -38,7 +38,7 @@ export const addCredential = async (event) => {
         data.append('issuer', issuer);
         data.append('certificateFile', event.target.certificateFile.files[0]);
 
-        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/backend/api/v1/issuer/issuer-credential`, data, {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/issuer/issuer-credential`, data, {
             headers : {
                 "Content-Type" : 'multipart/form-data',
                 'Authorization': 'Bearer ' + authorization
