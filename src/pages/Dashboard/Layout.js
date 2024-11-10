@@ -13,8 +13,8 @@ const Dashboard = () => {
   const { username } = useParams();
   const { error, isAuthenticated } = useAuth();
 
-  if(error) {
-    console.error(error);
+  if (error) {
+      console.error(error)
   }
 
   return (
