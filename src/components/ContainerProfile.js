@@ -6,26 +6,25 @@ const ContainerProfile = () => {
   const { isAuthenticated } = useAuth();
 
   const data = isAuthenticated ? JSON.parse(localStorage.getItem('user')) : null;
-
   return (
     <div className="card text-center mx-auto w-100 pt-5" style={{ backgroundColor: '#F6F4F4' }}>
       <div className="card-body mx-auto">
         <div className="d-flex align-items-start justify-content-center gap-5">
-        <div className="mb-3">
-          <img
-            src= {data ? data.user.picture : "https://via.placeholder.com/80"}
-            alt="Profile"
-            style={{ borderRadius: '50%', width: '80%', height: '80%' }}
-          />
-            <button className="btn btn-primary w-100 btn-sm mb-3 mt-3">Edit</button>
-        </div>
-        <h4 className="card-title mt-5">{data ? data.user.name : "Your name"}</h4>
+          <div className="mb-3">
+              <img
+                src= {data ? data.user.picture : "https://via.placeholder.com/80"}
+                alt="Profile"
+                style={{ borderRadius: '50%', width: '80%', height: '80%' }}
+              />
+              <h4 className="card-title mt-3">{data ? data.user.name : "Your name"}</h4>
+              <button className="btn btn-primary w-100 btn-sm mt-3">Edit</button>
+          </div>
         </div>
 
 
         <div className="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-3">
           <span className="text-muted text-center w-100 w-md-auto">
-              https://www.alphachain.com/ferrolazki
+              { data ? data.url : 'http://localhost:3000/your-name' }
           </span>
           
           <a

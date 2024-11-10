@@ -11,24 +11,10 @@ import { useParams } from "react-router-dom";
 
 const Dashboard = () => {
   const { username } = useParams();
-  const { error } = useAuth();
+  const { error, isAuthenticated } = useAuth();
 
-  const data = JSON.parse(localStorage.getItem('user'));
-
-  if (!data || data.user.username !== username) {
-    return (
-      <div className="text-center text-red-600 p-4">
-        <p>Error: Authorization failed</p>
-      </div>
-    );
-  }
-
-  if (error) {
-      return (
-          <div className="text-center text-red-600 p-4">
-              <p>Error: {error}</p>
-          </div>
-      );
+  if (!isAuthenticated) {
+      window.location.href="/"
   }
 
   return (

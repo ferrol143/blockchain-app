@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
-  Card, CardBody, Nav, NavItem, NavLink, Form, Button,
-  Spinner, Modal, ModalHeader, ModalBody, ModalFooter, Input
+  Card, CardBody, Nav, NavItem, NavLink, Form, FormGroup, Button,
+  Spinner, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input
 } from 'reactstrap';
 import { FaPlus, FaEdit } from 'react-icons/fa';
 import { BsUpload, BsXCircle } from 'react-icons/bs';
 import { Link } from "react-router-dom";
 import { MdOutlineArrowOutward } from "react-icons/md";
-
-const imgData = [
-  { url: 'https://marketplace.canva.com/EAFvH_lijhw/1/0/1600w/canva-hijau-putih-modern-apresiasi-seminar-sertifikat-qpyCKPpe3hc.jpg' },
-  { url: 'https://marketplace.canva.com/EAFvH_lijhw/1/0/1600w/canva-hijau-putih-modern-apresiasi-seminar-sertifikat-qpyCKPpe3hc.jpg' },
-  { url: 'https://marketplace.canva.com/EAFvH_lijhw/1/0/1600w/canva-hijau-putih-modern-apresiasi-seminar-sertifikat-qpyCKPpe3hc.jpg' },
-];
+import { addCredential, getBadges } from '../fetch/issuer';
 
 const BadgeWalletCard = (args) => {
   const [modal, setModal] = useState(false);
@@ -20,8 +15,30 @@ const BadgeWalletCard = (args) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [badges, setBadges] = useState([]);
+  const [error, setError] = useState(null);
 
   const toggle = () => setModal(!modal);
+
+  const fetchBadges = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const fetchedBadges = await getBadges();
+      const processedBadges = fetchedBadges.map(badge => ({
+        url: `${process.env.REACT_APP_SERVER_URL}/img/${badge.data.certificateName}`,
+      }));
+      setBadges(processedBadges);
+    } catch (err) {
+      setError('Failed to fetch badges. Please try again later.');
+      console.error('Error fetching badges:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchBadges();
+  }, [fetchBadges]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -32,13 +49,13 @@ const BadgeWalletCard = (args) => {
     setSelectedFile(null);
   };
 
-  const handleAddBadge = async () => {
-    if (!selectedFile) return;
-    setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsLoading(false);
-    toggle();
-  };
+  // const handleAddBadge = async () => {
+  //   if (!selectedFile) return;
+  //   setIsLoading(true);
+  //   await new Promise((resolve) => setTimeout(resolve, 2000));
+  //   setIsLoading(false);
+  //   toggle();
+  // };
 
   const openImageModal = (imageUrl) => {
     setSelectedImage(imageUrl);
@@ -71,7 +88,7 @@ const BadgeWalletCard = (args) => {
             {/* Tabs */}
             <Nav tabs>
               <NavItem>
-                <NavLink href="#" className="text-dark active">Alphachain (0)</NavLink>
+                <NavLink href="#" className="text-dark active">Aeternum ({badges.length})</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#" className="text-dark">Other (0)</NavLink>
@@ -80,11 +97,11 @@ const BadgeWalletCard = (args) => {
 
             {/* Message */}
             <div className="text-center text-muted mt-4">
-              {imgData.length === 0 ? (
+              {badges.length === 0 ? (
                 <p>Gunakan opsi +Tambah di atas untuk membagikan lencana Anda dari penyedia lain.</p>
               ) : (
                 <div className="row mt-4">
-                  {imgData.map((img, index) => (
+                  {badges.map((img, index) => (
                     <div key={index} className="col-6 col-md-4 col-lg-3 mb-4 position-relative">
                       <img
                         src={img.url}
@@ -108,7 +125,7 @@ const BadgeWalletCard = (args) => {
 
       {/* Add Badge Modal */}
       <Modal isOpen={modal} toggle={toggle} {...args} centered>
-        <Form>
+        <Form onSubmit={addCredential}>
           <ModalHeader toggle={toggle}>Tambah Badge</ModalHeader>
           <ModalBody>
             <p>
@@ -118,26 +135,47 @@ const BadgeWalletCard = (args) => {
               <strong>Kami belum mendukung lencana yang tidak sesuai dengan standar Lencana Terbuka, tetapi kami sedang berupaya mengatasinya!</strong>
               Misalnya, jika Anda memiliki lencana dari Microsoft, Oracle, atau Salesforce, Anda belum dapat menambahkannya ke profil Alphachain Anda, tetapi segera periksa kembali.
             </p>
-            <div className="text-center py-3">
-              <Button color="link" className="text-decoration-none text-primary" tag="label" style={{ cursor: 'pointer' }}>
-                <BsUpload size={24} className="me-2" /> Upload credential
-                <Input type="file" accept=".png,.svg,.json" onChange={handleFileChange} style={{ display: 'none' }} />
-              </Button>
-              <p className="small text-muted">File Types: png, svg, or json</p>
+            <FormGroup>
+              <Label for="email">Email Penerima</Label>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Masukan email penerima"
+              />
+            </FormGroup>
+            
+            <FormGroup>
+              <Label for="name">Nama Penerima</Label>
+              <Input
+                type="text"
+                name="recipient"
+                id="name"
+                placeholder="Masukan nama penerima"
+              />
+            </FormGroup>
+            <FormGroup>
+              <div className="text-center">
+                <Button color="link" className="text-decoration-none text-primary" tag="label" style={{ cursor: 'pointer' }}>
+                  <BsUpload size={24} className="me-2" /> Upload credential
+                  <Input type="file" name = "certificateFile" accept=".png, .svg, .pdf, .json" onChange={handleFileChange} style={{ display: 'none' }} />
+                </Button>
+                <p className="small text-muted">File Types: png, svg, pdf, or json</p>
 
-              {selectedFile && (
-                <div className="d-inline-flex align-items-center border border-primary p-2 rounded mt-2">
-                  <span>{selectedFile.name}</span>
-                  <Button color="link" onClick={removeFile} className="ms-2 p-0">
-                    <BsXCircle size={20} />
-                  </Button>
-                </div>
-              )}
-            </div>
+                {selectedFile && (
+                  <div className="d-inline-flex align-items-center border border-primary p-2 rounded mt-2">
+                    <span>{selectedFile.name}</span>
+                    <Button color="link" onClick={removeFile} className="ms-2 p-0">
+                      <BsXCircle size={20} />
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </FormGroup>
           </ModalBody>
           <ModalFooter className="d-flex justify-content-between">
             <Button color="link" onClick={toggle} className="text-success">Cancel</Button>
-            <Button color="success" onClick={handleAddBadge} disabled={!selectedFile || isLoading}>
+            <Button color="success" disabled={!selectedFile || isLoading}>
               {isLoading ? <Spinner size="sm" color="light" /> : 'Tambah Badge'}
             </Button>
           </ModalFooter>

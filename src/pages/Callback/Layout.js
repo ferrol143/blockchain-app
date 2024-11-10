@@ -18,18 +18,18 @@ const CallbackPage = () => {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/token${searchParams}`, { 
                     headers  : {
                         'Content-Type': 'application/json'
-                    },
-                    withCredentials: true 
+                    }
                 });
 
                 const userData = {
-                    user : response.data.data,
-                    url: `${process.env.REACT_APP_PUBLIC_URL}/${response.data.data.username}`
+                    token: response.data.data.token,
+                    user : response.data.data.user,
+                    url: `${process.env.REACT_APP_PUBLIC_URL}/${response.data.data.user.username}`
                 };
                 
                 localStorage.setItem('user', JSON.stringify(userData));
 
-                navigate(`/${response.data.data.username}`, { replace: true });
+                navigate(`/${response.data.data.user.username}`, { replace: true });
             } catch (error) {
                 console.error('Authentication failed:', error);
                 
