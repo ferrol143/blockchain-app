@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const verify = async (data) => {
     try {
-        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/verifier/verify-credential`, data, {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/backend/api/v1/verifier/verify-credential`, data, {
             headers : {
                 'Content-Type' : 'application/json'
             }

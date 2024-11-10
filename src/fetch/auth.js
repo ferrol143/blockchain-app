@@ -7,7 +7,7 @@ const login = async (event) => {
             email: event.target.email.value,
             password: event.target.password.value
         }
-        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/login`, data, {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/backend/api/v1/auth/login`, data, {
             headers  : {
                 'Content-Type': 'application/json'
             },
@@ -20,7 +20,7 @@ const login = async (event) => {
 const loginGoogle = async (event) => {
     event.preventDefault();
     try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/url`, {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/backend/api/v1/auth/url`, {
             headers  : {
                 'Content-Type': 'application/json'
             },
@@ -40,7 +40,7 @@ const logout = async () => {
         const dataUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
         const authorization = dataUser.token;
 
-        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/logout`, {} ,{ 
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/backend/api/v1/auth/logout`, {} ,{ 
             headers  : {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + authorization
