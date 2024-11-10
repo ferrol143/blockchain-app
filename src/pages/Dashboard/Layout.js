@@ -6,12 +6,21 @@ import FooterAlt from "../../Layout/FooterAlt";
 import ContainerProfile from "../../components/ContainerProfile";
 import NavBarDashboard from "../../Layout/NavbarDashboard";
 import BadgeWalletCard from "../../components/Badge";
+import useAuth from "../../hooks/auth-check";
+import { useParams } from "react-router-dom";
 
 const Dashboard = () => {
+  const { username } = useParams();
+  const { error, isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+      window.location.href="/"
+  }
+
   return (
     <React.Fragment>
       <NavBarDashboard isDark={true} />
-      {/* import Section */}
+      {}
     <ContainerProfile />
     <BadgeWalletCard />
       <Footer />
