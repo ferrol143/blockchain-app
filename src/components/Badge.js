@@ -129,11 +129,7 @@ const BadgeWalletCard = (args) => {
           <ModalHeader toggle={toggle}>Tambah Badge</ModalHeader>
           <ModalBody>
             <p>
-              Tambahkan kredensial dari penyedia lain dengan mengunggah file. Saat ini, Alphachain mendukung lencana apa pun yang sesuai dengan standar Open Badge 2.0 atau 3.0.
-            </p>
-            <p>
-              <strong>Kami belum mendukung lencana yang tidak sesuai dengan standar Lencana Terbuka, tetapi kami sedang berupaya mengatasinya!</strong>
-              Misalnya, jika Anda memiliki lencana dari Microsoft, Oracle, atau Salesforce, Anda belum dapat menambahkannya ke profil Alphachain Anda, tetapi segera periksa kembali.
+              Tambahkan kredensial dari penyedia lain dengan mengunggah file. Saat ini, Aeternum mendukung lencana apa pun yang sesuai dengan standar Open Badge 2.0 atau 3.0.
             </p>
             <FormGroup>
               <Label for="email">Email Penerima</Label>
