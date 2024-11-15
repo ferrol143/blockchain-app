@@ -100,8 +100,9 @@ const NavBar = ({isDark}, args) => {
                   "home",
                   "services",
                   "process",
+                  "pricing",
                   "testimonial",
-                  "sertificate"
+                  "certificate"
                 ]}
                 currentClassName="active"
                 className="navbar-nav ms-auto navbar-center d-xxl-flex flex-col align-items-xxl-center"
@@ -117,10 +118,13 @@ const NavBar = ({isDark}, args) => {
                   <NavLink href="#process">Cara Kerja</NavLink>
                 </li>
                 <li className="nav-item">
+                  <NavLink href="#pricing">Paket</NavLink>
+                </li>
+                <li className="nav-item">
                   <NavLink href="#testimonial">Testimoni</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink href="#sertificate">Cek Sertifikat</NavLink>
+                  <NavLink href="#certificate">Cek Sertifikat</NavLink>
                 </li>
                 <div className="ms-2">
                   <Link to="/" className="btn btn-primary" onClick={toggleLogin}>

@@ -9,6 +9,7 @@ import Process from "../../components/Process";
 import Services from "../../components/Services";
 import Testimonial from "../../components/Testimonial";
 import Sertificate from "../../components/Sertificate";
+import Pricing from "../../components/Pricing";
 
 const Layout1 = () => {
   return (
@@ -19,6 +20,7 @@ const Layout1 = () => {
       <Services />
       <About />
       <Process />
+      <Pricing/>
       <Testimonial />
       <Sertificate/>
       <Footer />
