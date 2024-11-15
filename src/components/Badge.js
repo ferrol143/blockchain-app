@@ -25,7 +25,7 @@ const BadgeWalletCard = (args) => {
       setIsLoading(true);
       const fetchedBadges = await getBadges();
       const processedBadges = fetchedBadges.map(badge => ({
-        url: `${process.env.REACT_APP_SERVER_URL}/img/${badge.data.certificateName}`,
+        url: `${process.env.REACT_APP_SERVER_URL}/api/img/${badge.data.certificateName}`,
       }));
       setBadges(processedBadges);
     } catch (err) {

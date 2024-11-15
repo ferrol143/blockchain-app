@@ -13,8 +13,8 @@ const Dashboard = () => {
   const { username } = useParams();
   const { error, isAuthenticated } = useAuth();
 
-  if (!isAuthenticated) {
-      window.location.href="/"
+  if (error) {
+      console.error(error)
   }
 
   return (

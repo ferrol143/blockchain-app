@@ -7,12 +7,10 @@ export const verify = async (data) => {
                 'Content-Type' : 'application/json'
             }
         });
-
         if(response.status === 200) {
             return response.data;
         }
     } catch (error) {
         console.error(error);
-        return error;
     }
 }
