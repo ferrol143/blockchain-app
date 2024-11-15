@@ -129,7 +129,7 @@ const BadgeWalletCard = (args) => {
           <ModalHeader toggle={toggle}>Tambah Badge</ModalHeader>
           <ModalBody>
             <p>
-              Tambahkan kredensial dari penyedia lain dengan mengunggah file. Saat ini, Aeternum mendukung lencana apa pun yang sesuai dengan standar Open Badge 2.0 atau 3.0.
+              Tambahkan kredensial dari penyedia lain dengan mengunggah file.
             </p>
             <FormGroup>
               <Label for="email">Email Penerima</Label>
