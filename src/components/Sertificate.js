@@ -105,20 +105,20 @@ const Certificate = () => {
   };
 
   return (
-    <section className="section" id="certificate">
+    <section className="section">
       <Container>
         <Row className="justify-content-center">
           <Col lg={7}>
-            <div className="text-center mb-4">
-              <p className="text-uppercase text-muted mb-2">Cek Sertifikat</p>
-              <h3 className="text-uppercase">
+            <div className="text-center">
+              <p className="text-uppercase text-white mb-2">Cek Sertifikat</p>
+              <h3 className="text-uppercase text-white">
                 Verifikasi Keaslian Sertifikat Digital
               </h3>
               <div className="title-border mt-3"></div>
-              <p className="title-desc text-muted mt-3">
+              {/* <p className="title-desc text-white mt-3">
                 Cukup masukkan kode sertifikat di bawah ini, dan sistem kami akan 
                 langsung memvalidasi informasi Anda.
-              </p>
+              </p> */}
             </div>
           </Col>
         </Row>

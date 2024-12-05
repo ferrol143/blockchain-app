@@ -49,7 +49,7 @@ const ProcessData = [
 const Process = () => {
   return (
     <React.Fragment>
-      <section className="bg-process section" id="process">
+      <section className="bg-process vh-100 d-flex align-items-center" id="process">
         <Container>
           <Row className="justify-content-center">
             <Col lg={7}>

@@ -625,6 +625,13 @@ html {
   position: relative;
 }
 
+#certificate {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 .sub-title {
   font-size: 15px;
   text-transform: uppercase;

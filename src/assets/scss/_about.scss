@@ -42,3 +42,26 @@
     width: 0;
   }
 }
+
+.title-about {
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: start;
+  font-size: 17px;
+}
+
+.title{
+  text-align: start;
+}
+
+.link{
+  color: $primary;
+  text-decoration: underline;
+}
+
+.about{
+  min-height: 100vh;
+  @media (max-width: 991.98px) {
+    min-height: 60vh;
+  }
+}

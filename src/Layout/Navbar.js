@@ -53,7 +53,7 @@ const NavBar = ({isDark}, args) => {
               {isDark ? (
                 <>
                   <img
-                    src={logoDark}
+                    src={logoLight}
                     className="logo-light"
                     alt=""
                     height="28"
@@ -98,10 +98,7 @@ const NavBar = ({isDark}, args) => {
                 offset={-18}
                 items={[
                   "home",
-                  "services",
-                  "process",
-                  "pricing",
-                  "testimonial",
+                  "about",
                   "certificate"
                 ]}
                 currentClassName="active"
@@ -109,25 +106,16 @@ const NavBar = ({isDark}, args) => {
                 id="mySidenav"
               >
                 <li className="nav-item">
-                  <NavLink href="#home">Beranda</NavLink>
+                  <NavLink href="/">Beranda</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink href="#services">Layanan</NavLink>
+                  <NavLink href="/about">Tentang Kami</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink href="#process">Cara Kerja</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink href="#pricing">Paket</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink href="#testimonial">Testimoni</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink href="#certificate">Cek Sertifikat</NavLink>
+                  <NavLink href="/checkcertificate">Cek Sertifikat</NavLink>
                 </li>
                 <div className="ms-2">
-                  <Link to="/" className="btn btn-primary" onClick={toggleLogin}>
+                  <Link to="#" className="btn btn-primary" onClick={toggleLogin}>
                     Masuk
                   </Link>
                 </div>

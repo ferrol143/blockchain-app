@@ -10,19 +10,19 @@ const data = [img5, img6, img7];
 
 const TestinomialData = [
   {
-    clientName: "Jennifer Shapiro",
-    caption: " \" Very well thought out and articulate communication.Clear milestones, deadlines and fast work. Patience. Infinite patience. No shortcuts. Even if the client is being careless. \" ",
-    profile: "Frontend"
+    clientName: "Rina Andini",
+    caption: " \" Aeternum mempermudah kami dalam menyimpan dan memverifikasi sertifikat pelatihan karyawan. Dengan teknologi blockchain, kami yakin data tetap aman dan valid, mempercepat proses verifikasi yang sebelumnya memakan waktu. \" ",
+    profile: "HR Manager"
   },
   {
-    clientName: "Brandon Carney",
-    caption: " \" It looks perfect on all major browsers, tablets, and mobile devices. All files are organized we believe it will be easy to use and edit them. This template is well organized and very easy to customize. \" ",
-    profile: "Designer"
+    clientName: "Dimas Prasetyo",
+    caption: " \" Saya merasa tenang menyimpan ijazah dan sertifikat kompetensi saya di Aeternum. Platform ini memanfaatkan teknologi AI untuk memverifikasi keaslian dokumen secara otomatis, memberi saya keyakinan bahwa data saya aman dan terjamin. \" ",
+    profile: "Mahasiswa"
   },
   {
-    clientName: "William Mooneyhan",
-    caption: " \" All your client websites if you are an agency or freelancer. It got all the tools needs to create super fast responsive websites with amazing user experience. We have added a Dark version with RTL supported. \" ",
-    profile: "Developer"
+    clientName: "Anita Kusuma",
+    caption: " \" Aeternum memudahkan kami dalam menyimpan sertifikat kelulusan siswa dengan aman dan memastikan keaslian dokumen. Proses verifikasi untuk alumni juga jadi lebih cepat dan efisien, memberikan kenyamanan bagi kami dan para lulusan. \" ",
+    profile: "Kepala Sekolah"
   },
 ];
 

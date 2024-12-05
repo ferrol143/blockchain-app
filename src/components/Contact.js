@@ -56,13 +56,11 @@ const Contact = () => {
           <Row className="justify-content-center">
             <Col lg={7}>
               <div className="text-center mb-4">
-                <p className="text-uppercase text-muted mb-2">Contact</p>
-                <h3 className="text-uppercase">Get In Touch</h3>
+                <p className="text-uppercase text-muted mb-2">Kontak</p>
+                <h3 className="text-uppercase">Hubungi Kami</h3>
                 <div className="title-border mt-3"></div>
                 <p className="title-desc text-muted mt-3">
-                  We craft digital, graphic and dimensional thinking, to create
-                  category leading brand experiences that have meaning and add a
-                  value.
+                  Kami siap membantu Anda! Jika memiliki pertanyaan, masukan, atau ingin berkomunikasi, jangan ragu untuk menghubungi kami.
                 </p>
               </div>
             </Col>
@@ -70,21 +68,7 @@ const Contact = () => {
 
           {/*  */}
 
-          <Row className="justify-content-center">
-            {/* Contact Component Start */}
-
-            {ContactData.map((value, idx) => (
-              <Card
-                key={idx}
-                title={value.title}
-                iconClass={value.iconClass}
-                isChildItem={value.isChildItem}
-              />
-            ))}
-            {/* Contact Component End */}
-          </Row>
-
-          <Row className="mt-5 pt-2 justify-content-center">
+          <Row className="mt-4 pt-2 justify-content-center">
             <Col lg={9}>
               <div className="custom-form">
                 <Form action="#" name="myForm">
@@ -94,14 +78,14 @@ const Contact = () => {
                       <FormGroup>
                         <div className="mb-3">
                           <Label for="name" className="form-label">
-                            Name* :
+                            Nama
                           </Label>
                           <Input
                             name="name"
                             id="name"
                             type="text"
                             className="form-control"
-                            placeholder="Enter your name"
+                            placeholder="Masukan nama anda"
                           />
                         </div>
                       </FormGroup>
@@ -113,14 +97,14 @@ const Contact = () => {
                       <FormGroup>
                         <div className="mb-3">
                           <Label for="email" className="form-label">
-                            Email address* :
+                            Alamat Email
                           </Label>
                           <Input
                             type="email"
                             className="form-control"
                             name="email"
                             id="email"
-                            placeholder="Enter your email"
+                            placeholder="Masukan email anda"
                           />
                         </div>
                       </FormGroup>
@@ -130,14 +114,14 @@ const Contact = () => {
                       <FormGroup>
                         <div className="mb-3">
                           <Label for="number" className="form-label">
-                            Phone number* :
+                            Nomor Telepon
                           </Label>
                           <Input
                             type="number"
                             className="form-control"
                             name="number"
                             id="number"
-                            placeholder="Enter your number"
+                            placeholder="Masukan nomor telepon anda"
                           />
                         </div>
                       </FormGroup>
@@ -147,12 +131,12 @@ const Contact = () => {
                       <FormGroup>
                         <div className="mb-3">
                           <Label for="comments" className="form-label">
-                            Comments :
+                            Pesan
                           </Label>
                           <Input
                             type="textarea"
                             className="form-control"
-                            placeholder="Leave a comment here"
+                            placeholder="Tinggalkan pesan anda"
                             name="comments"
                             id="comments"
                             style={{ height: "100px" }}
@@ -171,7 +155,7 @@ const Contact = () => {
                             id="submit"
                             name="send"
                             className="submitBnt btn btn-primary"
-                            value="Send Message"
+                            value="Kirim Pesan"
                           />
                           <div id="simple-msg"></div>
                         </div>

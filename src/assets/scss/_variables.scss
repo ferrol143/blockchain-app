@@ -16,6 +16,7 @@ $white:     #ffffff;
 $dark:      #161c2d;
 $light:     #f9f9f9;
 $muted:     #8492a6;
+$dark-green: #183339;
 
 // stylelint-disable
 $gray-100: #f8f9fa;
@@ -41,7 +42,8 @@ $colors: (
     "purple":    $purple,
     "pink":      $pink,
     "white":     $white,
-    "light":     $light
+    "light":     $light,
+    "dark-green": $dark-green
 );
 
 $theme-colors: (
@@ -54,6 +56,7 @@ $theme-colors: (
   "dark":         $dark,
   "muted":        $muted,
   "white":        $white,
+  "dark-green":   $dark-green
 );
 
 // Body Background

@@ -30,8 +30,8 @@ const ListData = [
     isList: true,
     isShow: true,
     isChildList: [
-      { id: 1, subList: "Company History" },
-      { id: 2, subList: "Documentation" },
+      { id: 1, subList: "Tentang Kami" },
+      { id: 2, subList: "Dokumentasi" },
       { id: 3, subList: "Term & Service" },
       { id: 4, subList: "Components" },
     ],
