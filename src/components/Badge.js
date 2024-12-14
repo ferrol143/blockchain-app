@@ -43,6 +43,7 @@ const BadgeWalletCard = (args) => {
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     const result = await analyzerFile(file);
+    console.log(result)
     setSelectedFile(file);
   };
 
