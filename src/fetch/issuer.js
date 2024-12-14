@@ -29,7 +29,7 @@ export const analyzerFile = async (file) => {
     try {
         const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/ai/upload`, data, {
             headers : {
-                "Content-Type" : 'application/json',
+                "Content-Type" : 'multipart/form-data',
                 'Authorization': 'Bearer ' + authorization
             },
         });

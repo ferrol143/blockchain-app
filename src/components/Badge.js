@@ -17,6 +17,8 @@ const BadgeWalletCard = (args) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [badges, setBadges] = useState([]);
   const [error, setError] = useState(null);
+  const [fileData, setFileData] = useState(null);
+  const [dynamicInputs, setDynamicInputs] = useState([]);
 
   const toggle = () => setModal(!modal);
 
@@ -42,9 +44,26 @@ const BadgeWalletCard = (args) => {
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
-    const result = await analyzerFile(file);
-    console.log(result)
-    setSelectedFile(file);
+    if (file) {
+      try {
+        const {labels, values} = await analyzerFile(file);
+
+        setSelectedFile(file);
+        setFileData({labels, values});
+
+      if (labels && values) {
+        const inputs = Object.keys(labels).map((key) => ({
+          id: key,
+          label: labels[key],
+          value: values[key] || '',
+        }));
+        setDynamicInputs(inputs);
+      }
+
+      } catch (error) {
+        console.error('Error analyzing file:', error);
+      }
+    }
   };
 
   const removeFile = () => {
@@ -143,7 +162,7 @@ const BadgeWalletCard = (args) => {
               />
             </FormGroup>
             
-            <FormGroup>
+            {/* <FormGroup>
               <Label for="name">Nama Penerima</Label>
               <Input
                 type="text"
@@ -151,7 +170,22 @@ const BadgeWalletCard = (args) => {
                 id="name"
                 placeholder="Masukan nama penerima"
               />
-            </FormGroup>
+            </FormGroup> */}
+
+            {/* Render dynamic inputs based on file analysis */}
+            {dynamicInputs.map((input) => (
+              <FormGroup key={input.id}>
+                <Label for={input.id}>{input.label}</Label>
+                <Input
+                  type="text"
+                  id={input.id}
+                  name={input.id}
+                  value={input.value}
+                  readOnly
+                />
+              </FormGroup>
+            ))}
+
             <FormGroup>
               <div className="text-center">
                 <Button color="link" className="text-decoration-none text-primary" tag="label" style={{ cursor: 'pointer' }}>
