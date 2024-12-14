@@ -21,6 +21,26 @@ export const getBadges = async () => {
     }
 }
 
+export const analyzerFile = async (data) => {
+    const dataUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const authorization = dataUser.token;
+
+    try {
+        const response = await axios.post(`https://aeternum.my.id/ai/upload`, data, {
+            headers : {
+                "Content-Type" : 'application/json',
+                'Authorization': 'Bearer ' + authorization
+            },
+        });
+
+        if(response.status === 200) {
+           return response.data.data
+        }
+    } catch (error) {
+        console.log(error.response.data)
+    }
+}
+
 export const addCredential = async (event) => {
     event.preventDefault();
     try{

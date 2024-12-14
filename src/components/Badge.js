@@ -7,7 +7,7 @@ import { FaPlus, FaEdit } from 'react-icons/fa';
 import { BsUpload, BsXCircle } from 'react-icons/bs';
 import { Link } from "react-router-dom";
 import { MdOutlineArrowOutward } from "react-icons/md";
-import { addCredential, getBadges } from '../fetch/issuer';
+import { addCredential, analyzerFile, getBadges } from '../fetch/issuer';
 
 const BadgeWalletCard = (args) => {
   const [modal, setModal] = useState(false);
@@ -40,8 +40,9 @@ const BadgeWalletCard = (args) => {
     fetchBadges();
   }, [fetchBadges]);
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
+    const result = await analyzerFile(file);
     setSelectedFile(file);
   };
 
@@ -106,7 +107,7 @@ const BadgeWalletCard = (args) => {
                       <img
                         src={img.url}
                         alt={`Lencana ${index + 1}`}
-                        className="img-fluid rounded"
+                        className="img-fluid rounded h-100"
                         style={{ height: '200px', objectFit: 'cover' }}
                       />
                       <div onClick={() => openImageModal(img.url)} className="overlay position-absolute top-0 start-0 h-100 d-flex align-items-center justify-content-center">
