@@ -53,7 +53,7 @@ export const addCredential = async (event) => {
 
         const data = new FormData();
         data.append('email', event.target.email.value);
-        data.append('recipient', event.target.recipient.value);
+        data.append('recipient', event.target.recipientName.value);
         data.append('email_issuer', email_issuer);
         data.append('id_issuer', id_issuer);
         data.append('issuer', issuer);
