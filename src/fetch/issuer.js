@@ -21,12 +21,13 @@ export const getBadges = async () => {
     }
 }
 
-export const analyzerFile = async (data) => {
+export const analyzerFile = async (file) => {
     const dataUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
     const authorization = dataUser.token;
-
+    const data = new FormData();
+    data.append('file', file)
     try {
-        const response = await axios.post(`https://aeternum.my.id/ai/upload`, data, {
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/ai/upload`, data, {
             headers : {
                 "Content-Type" : 'application/json',
                 'Authorization': 'Bearer ' + authorization
