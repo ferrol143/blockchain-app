@@ -19,6 +19,7 @@ const BadgeWalletCard = (args) => {
   const [error, setError] = useState(null);
   const [fileData, setFileData] = useState(null);
   const [dynamicInputs, setDynamicInputs] = useState([]);
+  const [fileUploading, setFileUploading] = useState(false); // Add state for file upload loading
 
   const toggle = () => setModal(!modal);
 
@@ -46,6 +47,7 @@ const BadgeWalletCard = (args) => {
     const file = event.target.files[0];
     if (file) {
       try {
+        setFileUploading(true); // Set loading state to true when upload starts
         const {labels, values} = await analyzerFile(file);
 
         setSelectedFile(file);
@@ -62,6 +64,8 @@ const BadgeWalletCard = (args) => {
 
       } catch (error) {
         console.error('Error analyzing file:', error);
+      } finally {
+        setFileUploading(false); // Set loading state to false when upload completes
       }
     }
   };
@@ -90,6 +94,36 @@ const BadgeWalletCard = (args) => {
 
   return (
     <div className="container d-flex align-items-center justify-content-center min-vh-100">
+      {/* Overlay Spinner */}
+      {(isLoading || fileUploading) && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 9999
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            padding: '20px',
+            borderRadius: '10px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}>
+            <Spinner color="primary" style={{ width: '3rem', height: '3rem' }} />
+            <div className="mt-2 text-center">
+              {fileUploading ? 'Processing file...' : 'Loading...'}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="w-100">
         <Card className="p-3" style={{ borderRadius: '10px', minHeight: '500px', backgroundColor: '#F6F4F4' }}>
           <CardBody>
